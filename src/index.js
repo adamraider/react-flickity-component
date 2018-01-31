@@ -57,7 +57,12 @@ class FlickityComponent extends Component {
     if (canUseDOM) {
       this.flkty = new Flickity(carousel, this.props.options);
       this.flkty.on('cellSelect', this.updateSelected);
+      this.flkty.on('cellSelect', this.updateSelected);
       this.imagesLoaded();
+    }
+
+    if (this.props.initialize) {
+      this.props.initialize(this.flkty);
     }
   }
 
@@ -83,6 +88,7 @@ FlickityComponent.propTypes = {
   elementType: PropTypes.string,
   children: PropTypes.array,
   onSwipe: PropTypes.func,
+  initialize: PropTypes.func,
 };
 
 FlickityComponent.defaultProps = {
