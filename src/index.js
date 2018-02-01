@@ -57,7 +57,6 @@ class FlickityComponent extends Component {
     if (canUseDOM) {
       this.flkty = new Flickity(carousel, this.props.options);
       this.flkty.on('cellSelect', this.updateSelected);
-      this.flkty.on('cellSelect', this.updateSelected);
       this.imagesLoaded();
     }
 

@@ -30,9 +30,18 @@ const flickityOptions = {
 }
 
 function Carousel() {
+  this.flickityInstance = null
+  
+  this.handleInitialize = function (flickityInstance) {
+    this.flickityInstance = flickityInstance
+  }
+
+  this.handleInitialize = this.handleInitialize.bind(this)
+
   return (
     <Flickity
       className={'carousel'} // default ''
+      initialize={this.handleInitialize}
       elementType={'div'} // default 'div'
       options={flickityOptions} // takes flickity options {}
       disableImagesLoaded={false} // default false
@@ -59,6 +68,9 @@ yarn start
 
 ##### className={String}
 `className` applied to top level component.
+
+##### initialize={Func}
+Runs after the Flickity instance is ready, passes the Flickity instance as an argument
 
 ##### elementType={String}
 What kind of DOM element to render, defaults to 'div'
